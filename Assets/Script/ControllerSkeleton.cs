@@ -23,7 +23,7 @@ public class ControllerSkeleton : MonoBehaviour
     void Update()
     {
         Vector2 point = currentPoint.position - transform.position;
-        currentAnimation = 1;
+        currentAnimation = 2;
 
         if (point.x > 0)
         {
