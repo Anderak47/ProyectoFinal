@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerEnemy : MonoBehaviour
+public class ControllerEnemyDer : MonoBehaviour
 {
-    public GameObject MoveA;
-    public GameObject MoveB;
+    public GameObject MoveA; // Punto A (derecha)
+    public GameObject MoveB; // Punto B (izquierda)
     private Rigidbody2D rb;
     private Transform currentPoint;
     public float speed;
@@ -13,7 +13,7 @@ public class ControllerEnemy : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentPoint = MoveB.transform;
+        currentPoint = MoveA.transform; // Comenzar en el punto A (izquierda)
     }
 
     void Update()
@@ -24,22 +24,22 @@ public class ControllerEnemy : MonoBehaviour
         {
             // Mover hacia la derecha
             rb.velocity = new Vector2(speed, 0);
-            transform.localScale = new Vector3(-1, 1, 1); // Mirar a la derecha
+            transform.localScale = new Vector3(1, 1, 1); // Mirar a la izquierda
         }
         else
         {
             // Mover hacia la izquierda
             rb.velocity = new Vector2(-speed, 0);
-            transform.localScale = new Vector3(1, 1, 1); // Mirar a la izquierda
+            transform.localScale = new Vector3(-1, 1, 1); // Mirar a la derecha
         }
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == MoveB.transform)
-        {
-            currentPoint = MoveA.transform;
-        }
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == MoveA.transform)
         {
             currentPoint = MoveB.transform;
+        }
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == MoveB.transform)
+        {
+            currentPoint = MoveA.transform;
         }
     }
 }
