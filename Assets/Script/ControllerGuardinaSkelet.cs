@@ -19,7 +19,7 @@ public class ControllerGuardinaSkelet : MonoBehaviour
     {
         //hacer algo cuando el personaje recien llegue activar animacion de atacar
         //if
-        currentAnimation = 1;
+        currentAnimation = 3;
         //cuando se acerque el personaje ejecutar la animacion de ataque  currentAnimation = 2;
         animator.SetInteger("Estado", currentAnimation);
     }
