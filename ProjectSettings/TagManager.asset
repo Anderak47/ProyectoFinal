@@ -6,6 +6,7 @@ TagManager:
   tags:
   - puntoA
   - puntoB
+  - PlataformaMovible
   layers:
   - Default
   - TransparentFX
