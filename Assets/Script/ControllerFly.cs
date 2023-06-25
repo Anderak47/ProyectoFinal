@@ -43,4 +43,11 @@ public class ControllerFly : MonoBehaviour
             currentPoint = MoveB.transform;
         }
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "flechaPersonaje")
+        {
+            Debug.Log("flecha choco a fly");
+        }
+    }
 }
