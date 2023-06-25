@@ -17,6 +17,7 @@ public class ControllerPersonajeP : MonoBehaviour
     public GameManager gameManager;
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();

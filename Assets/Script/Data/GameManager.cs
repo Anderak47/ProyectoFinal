@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         
         gameRepository = GetComponent<GameRepository>();
         //borrar data
-        gameRepository.SaveData(gameData);
+        //gameRepository.SaveData(gameData);
         flechaText = GameObject.Find("/Canvas/FlechaText").GetComponent<Text>();
         muerteText = GameObject.Find("/Canvas/MuertesText").GetComponent<Text>();
         vidasText = GameObject.Find("/Canvas/VidasText").GetComponent<Text>();

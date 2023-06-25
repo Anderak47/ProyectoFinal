@@ -7,8 +7,10 @@ public class PortalEscena1 : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameManager gameManager;
+   
     void Start()
     {
+
         gameManager = FindObjectOfType<GameManager>();
     }
 
@@ -21,7 +23,7 @@ public class PortalEscena1 : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (gameManager.GetCantidadLlaves() ==1)
+            if (gameManager.GetCantidadLlaves() >=1)
             {
                 SceneManager.LoadScene("Scene2");
             }
