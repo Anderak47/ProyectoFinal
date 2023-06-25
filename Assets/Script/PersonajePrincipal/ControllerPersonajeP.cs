@@ -121,7 +121,7 @@ public class ControllerPersonajeP : MonoBehaviour
         }
         else if (collision.gameObject.tag == "EnemyShield")
         {
-            Debug.Log("Perdio vida el jugador");
+            //Debug.Log("Perdio vida el jugador");
             gameManager.PerderVidas();
         }
     }

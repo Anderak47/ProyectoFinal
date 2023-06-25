@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     Text flechaText;
     Text muerteText;
     Text vidasText;
+    Text llaveText;
    
     void Start()
     {
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         flechaText = GameObject.Find("/Canvas/FlechaText").GetComponent<Text>();
         muerteText = GameObject.Find("/Canvas/MuertesText").GetComponent<Text>();
         vidasText = GameObject.Find("/Canvas/VidasText").GetComponent<Text>();
+        llaveText = GameObject.Find("/Canvas/LlaveText").GetComponent<Text>();
         gameData = gameRepository.GetSavedData();
 
         LoadScreenTexts();
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
         flechaText.text = $"Flecha: {gameData.flechas}";
         muerteText.text = $"Muertes: {gameData.muertes}";
         vidasText.text = $"Vidas: {gameData.vidas}";
+        llaveText.text = $"Llave: {gameData.llave}";
     }
     public List<string> GetSkills()
     {
@@ -71,5 +74,21 @@ public class GameManager : MonoBehaviour
     public int GetVidas()
     {
         return gameData.vidas;
+    }
+    public void AumentarVidas()
+    {
+        gameData.vidas++;
+        gameRepository.SaveData(gameData);
+        LoadScreenTexts();
+    }
+    //llaves
+    public void llaves() {
+        gameData.llave++;
+        gameRepository.SaveData(gameData);
+        LoadScreenTexts();
+    }
+    public int GetCantidadLlaves()
+    {
+        return gameData.llave;
     }
 }

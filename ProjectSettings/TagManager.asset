@@ -12,6 +12,7 @@ TagManager:
   - EnemySpider
   - EnemyFly
   - EnemyShield
+  - Moneda
   layers:
   - Default
   - TransparentFX
