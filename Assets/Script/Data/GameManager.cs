@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         
         gameRepository = GetComponent<GameRepository>();
         //borrar data
-        gameRepository.SaveData(gameData);
+        //gameRepository.SaveData(gameData);
         flechaText = GameObject.Find("/Canvas/FlechaText").GetComponent<Text>();
         muerteText = GameObject.Find("/Canvas/MuertesText").GetComponent<Text>();
         vidasText = GameObject.Find("/Canvas/VidasText").GetComponent<Text>();
@@ -55,19 +55,11 @@ public class GameManager : MonoBehaviour
     {
         return gameData.flechas;
     }
-    //contar flechas disparadas
-    public void ContarFlechas()
-    {
-        if (gameData.flechas > 0)
-        {
-            gameData.flechas++;
-            gameRepository.SaveData(gameData);
-            LoadScreenTexts();
-        }
-    }
-    public int GetContarFlechas()
-    {
-        return gameData.flechas;
+    //ganarFlechas
+    public void GanarFlechas() {
+        gameData.flechas++;
+        gameRepository.SaveData(gameData);
+        LoadScreenTexts();
     }
     //muertes
     public void MuertesEnemigo() {

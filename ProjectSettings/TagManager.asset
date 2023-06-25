@@ -16,6 +16,7 @@ TagManager:
   - EnemigoCalv
   - EnemyArcher
   - EnemyDispara
+  - Portal3
   layers:
   - Default
   - TransparentFX

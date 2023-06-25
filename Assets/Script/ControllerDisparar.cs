@@ -18,19 +18,21 @@ public class ControllerDisparar : MonoBehaviour
 
     private int flechasRecibidas = 0;
     private bool colisionManejada = false;
+    private GameManager gameManager;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         nextFireTime = Time.time + fireRate; // Establecer el próximo tiempo de disparo
         animator = GetComponent<Animator>();
-
+        gameManager = FindObjectOfType<GameManager>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         currentAnimation = 1;
-
         // Verificar si ha pasado suficiente tiempo para disparar
         if (Time.time >= nextFireTime)
         {
@@ -53,12 +55,11 @@ public class ControllerDisparar : MonoBehaviour
         
             colisionManejada = true;
             flechasRecibidas++;
-            Debug.Log("flecha del personaje colisionó con el enemigo. Flechas recibidas: " + flechasRecibidas);
-           
+            
             if (flechasRecibidas == 2)
             {
                 Debug.Log("El enemigo ha sido derrotado");
-                // Aquí puedes realizar las acciones necesarias cuando el enemigo muera, como destruirlo u otorgar puntos al jugador.
+                gameManager.MuertesEnemigo();
                 Destroy(gameObject);
             }
             colisionManejada = false;
