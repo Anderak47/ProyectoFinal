@@ -10,10 +10,12 @@ public class ControllerFly : MonoBehaviour
     private Transform currentPoint;
     public float speed;
     // Start is called before the first frame update
+    private GameManager gameManager;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentPoint = MoveB.transform;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -48,6 +50,8 @@ public class ControllerFly : MonoBehaviour
         if (collision.gameObject.tag == "flechaPersonaje")
         {
             Debug.Log("flecha choco a fly");
+            gameManager.MuertesEnemigo(); // Llamar al método MuertesEnemigo del GameManager
+            Destroy(gameObject);
         }
     }
 }

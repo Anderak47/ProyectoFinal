@@ -11,6 +11,10 @@ public class ControllerPersonajeP : MonoBehaviour
 
     private int currentAnimation = 1;
     // Start is called before the first frame update
+
+    public Transform Disparo;
+    public GameObject Flecha;
+    public GameManager gameManager;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -68,8 +72,25 @@ public class ControllerPersonajeP : MonoBehaviour
 			currentAnimation = 3;
 			rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
 		}
-		
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (gameManager.GetFlechas() > 0)
+            {
+                Instantiate(Flecha, Disparo.position, Disparo.rotation);
+                PerderFlechas();
+            }
+        }
+        //vidas del jugador
+        if (gameManager.GetVidas() <= 0)
+        {
+            currentAnimation = 8;
+        }
+
         animator.SetInteger("Estado", currentAnimation);
+    }
+    void PerderFlechas()
+    {
+        gameManager.PerderFlechas();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -77,7 +98,7 @@ public class ControllerPersonajeP : MonoBehaviour
         if(collision.gameObject.tag == "PlataformaMovible")
         {
             transform.parent = collision.transform;
-        }
+        }    
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -86,4 +107,23 @@ public class ControllerPersonajeP : MonoBehaviour
             transform.parent = null;
         }
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemySpider")
+        {
+            //Debug.Log("Perdio vida el jugador");
+            gameManager.PerderVidas();
+        }
+        else if (collision.gameObject.tag == "EnemyFly")
+        {
+            //Debug.Log("Perdio vida el jugador");
+            gameManager.PerderVidas();
+        }
+        else if (collision.gameObject.tag == "EnemyShield")
+        {
+            Debug.Log("Perdio vida el jugador");
+            gameManager.PerderVidas();
+        }
+    }
+
 }

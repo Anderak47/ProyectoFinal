@@ -15,9 +15,6 @@ public class PuntoDisparo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.X))
-        {
-            Instantiate(Flecha, Disparo.position, Disparo.rotation);
-        }
+        
     }
 }

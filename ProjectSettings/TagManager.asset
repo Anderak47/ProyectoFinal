@@ -9,6 +9,9 @@ TagManager:
   - PlataformaMovible
   - flechaPersonaje
   - flechaEnemigo
+  - EnemySpider
+  - EnemyFly
+  - EnemyShield
   layers:
   - Default
   - TransparentFX

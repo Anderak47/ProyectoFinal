@@ -9,10 +9,12 @@ public class ControllerShield : MonoBehaviour
     private Rigidbody2D rb;
     private Transform currentPoint;
     public float speed;
+    private GameManager gameManager;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentPoint = MoveB.transform;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -47,6 +49,8 @@ public class ControllerShield : MonoBehaviour
         if (collision.gameObject.tag == "flechaPersonaje")
         {
             Debug.Log("choco a shield");
+            gameManager.MuertesEnemigo(); // Llamar al método MuertesEnemigo del GameManager
+            Destroy(gameObject);
         }
     }
 }
