@@ -16,6 +16,8 @@ public class ControllerDisparar : MonoBehaviour
     Animator animator;
     private int currentAnimation = 1;
 
+    private int flechasRecibidas = 0;
+    private bool colisionManejada = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,5 +45,23 @@ public class ControllerDisparar : MonoBehaviour
     void Shoot()
     {
         Instantiate(bullet, firePoint.position, firePoint.rotation);
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("flechaPersonaje") && !colisionManejada)
+        {
+        
+            colisionManejada = true;
+            flechasRecibidas++;
+            Debug.Log("flecha del personaje colisionó con el enemigo. Flechas recibidas: " + flechasRecibidas);
+           
+            if (flechasRecibidas == 2)
+            {
+                Debug.Log("El enemigo ha sido derrotado");
+                // Aquí puedes realizar las acciones necesarias cuando el enemigo muera, como destruirlo u otorgar puntos al jugador.
+                Destroy(gameObject);
+            }
+            colisionManejada = false;
+        }
     }
 }

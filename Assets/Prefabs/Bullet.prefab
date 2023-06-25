@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8827787325028530705}
   - component: {fileID: 8827787325028530704}
   - component: {fileID: 8827787325028530711}
+  - component: {fileID: 3560120245496456087}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: flechaEnemigo
@@ -120,3 +121,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+--- !u!61 &3560120245496456087
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827787325028530710}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.020611048, y: -0.000000055879354}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.2, y: 0.36}
+    newSize: {x: 0.44, y: 0.38}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.1587777, y: 0.2333858}
+  m_EdgeRadius: 0

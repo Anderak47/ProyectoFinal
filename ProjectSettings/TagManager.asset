@@ -13,6 +13,9 @@ TagManager:
   - EnemyFly
   - EnemyShield
   - Moneda
+  - EnemigoCalv
+  - EnemyArcher
+  - EnemyDispara
   layers:
   - Default
   - TransparentFX

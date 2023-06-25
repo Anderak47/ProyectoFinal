@@ -15,6 +15,7 @@ public class ControllerPersonajeP : MonoBehaviour
     public Transform Disparo;
     public GameObject Flecha;
     public GameManager gameManager;
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
@@ -110,21 +111,16 @@ public class ControllerPersonajeP : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "EnemySpider")
+        if (collision.gameObject.CompareTag("EnemySpider") ||
+        collision.gameObject.CompareTag("EnemyFly") ||
+        collision.gameObject.CompareTag("EnemyShield") ||
+        collision.gameObject.CompareTag("EnemigoCalv") ||
+        collision.gameObject.CompareTag("EnemyDispara") ||
+        collision.gameObject.CompareTag("EnemyArcher"))
         {
-            //Debug.Log("Perdio vida el jugador");
             gameManager.PerderVidas();
         }
-        else if (collision.gameObject.tag == "EnemyFly")
-        {
-            //Debug.Log("Perdio vida el jugador");
-            gameManager.PerderVidas();
-        }
-        else if (collision.gameObject.tag == "EnemyShield")
-        {
-            //Debug.Log("Perdio vida el jugador");
-            gameManager.PerderVidas();
-        }
+
     }
 
 }

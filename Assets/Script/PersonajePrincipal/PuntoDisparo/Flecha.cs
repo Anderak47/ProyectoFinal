@@ -18,4 +18,17 @@ public class Flecha : MonoBehaviour
         rb.velocity = transform.right * speed;
         Destroy(gameObject, 3f);
     }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemySpider") ||
+        collision.gameObject.CompareTag("EnemyFly") ||
+        collision.gameObject.CompareTag("EnemyShield") ||
+        collision.gameObject.CompareTag("EnemigoCalv") ||
+        collision.gameObject.CompareTag("EnemyDispara") ||
+        collision.gameObject.CompareTag("EnemyArcher"))
+        {
+            Destroy(gameObject);
+        }
+
+    }
 }
