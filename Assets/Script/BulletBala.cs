@@ -25,6 +25,7 @@ public class BulletBala : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && !haGolpeado)
         {
+            Debug.Log("golpeo bala ");
             haGolpeado = true;
             gameManager.PerderVidas();
             // Resto de acciones a realizar cuando la flecha golpea al personaje

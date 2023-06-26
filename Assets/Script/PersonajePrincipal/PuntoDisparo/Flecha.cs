@@ -25,7 +25,12 @@ public class Flecha : MonoBehaviour
         collision.gameObject.CompareTag("EnemyShield") ||
         collision.gameObject.CompareTag("EnemigoCalv") ||
         collision.gameObject.CompareTag("EnemyDispara") ||
-        collision.gameObject.CompareTag("EnemyArcher"))
+        collision.gameObject.CompareTag("EnemyArcher") ||
+        collision.gameObject.CompareTag("EnemySkeleton") ||
+        collision.gameObject.CompareTag("EnemyDisp") ||
+        collision.gameObject.CompareTag("EnemyMage") ||
+        collision.gameObject.CompareTag("EnemySpear") ||
+        collision.gameObject.CompareTag("GuardiaSkeleton"))
         {
             Destroy(gameObject);
         }

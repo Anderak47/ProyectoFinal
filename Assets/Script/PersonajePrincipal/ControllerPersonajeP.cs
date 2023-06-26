@@ -112,15 +112,24 @@ public class ControllerPersonajeP : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EnemySpider") ||
-        collision.gameObject.CompareTag("EnemyFly") ||
-        collision.gameObject.CompareTag("EnemyShield") ||
-        collision.gameObject.CompareTag("EnemigoCalv") ||
-        collision.gameObject.CompareTag("EnemyDispara") ||
-        collision.gameObject.CompareTag("EnemyArcher"))
+            collision.gameObject.CompareTag("EnemyFly") ||
+            collision.gameObject.CompareTag("EnemyShield") ||
+            collision.gameObject.CompareTag("EnemigoCalv") ||
+            collision.gameObject.CompareTag("EnemyDispara") ||
+            collision.gameObject.CompareTag("EnemyArcher") ||
+            collision.gameObject.CompareTag("EnemyMage") ||
+            collision.gameObject.CompareTag("EnemyDisp") ||
+            collision.gameObject.CompareTag("EnemySpear"))
         {
+            Debug.Log("golpeo 1");
             gameManager.PerderVidas();
         }
-
+        else if ((collision.gameObject.tag == "EnemySkeleton" || collision.gameObject.tag == "GuardiaSkeleton"))
+        {
+            gameManager.PerderVidasSkeleton();
+            Debug.Log("golpeo skeleton");
+         
+        }
     }
 
 }

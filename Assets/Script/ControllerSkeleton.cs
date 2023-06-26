@@ -13,11 +13,15 @@ public class ControllerSkeleton : MonoBehaviour
     Animator animator;
 
     private int currentAnimation = 1;
+    private int flechasRecibidas = 0;
+    private bool colisionManejada = false;
+    private GameManager gameManager;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentPoint = MoveB.transform;
         animator = GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -51,5 +55,24 @@ public class ControllerSkeleton : MonoBehaviour
             currentPoint = MoveB.transform;
         }
         animator.SetInteger("Estado", currentAnimation);
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("flechaPersonaje") && !colisionManejada)
+        {
+            colisionManejada = true;
+            flechasRecibidas++;
+
+
+            if (flechasRecibidas == 4)
+            {
+                Debug.Log("El enemigo ha sido derrotado");
+                gameManager.MuertesEnemigo();
+                // Aquí puedes realizar las acciones necesarias cuando el enemigo muera, como destruirlo u otorgar puntos al jugador.
+                Destroy(gameObject);
+            }
+
+            colisionManejada = false;
+        }
     }
 }

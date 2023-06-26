@@ -16,17 +16,19 @@ public class GameManager : MonoBehaviour
     Text muerteText;
     Text vidasText;
     Text llaveText;
-   
+    Text gameOverText;
+
     void Start()
     {
-        
+
         gameRepository = GetComponent<GameRepository>();
         //borrar data
-        //gameRepository.SaveData(gameData);
+        gameRepository.SaveData(gameData);
         flechaText = GameObject.Find("/Canvas/FlechaText").GetComponent<Text>();
         muerteText = GameObject.Find("/Canvas/MuertesText").GetComponent<Text>();
         vidasText = GameObject.Find("/Canvas/VidasText").GetComponent<Text>();
         llaveText = GameObject.Find("/Canvas/LlaveText").GetComponent<Text>();
+        gameOverText = GameObject.Find("/Canvas/GameOverText").GetComponent<Text>(); 
         gameData = gameRepository.GetSavedData();
 
         LoadScreenTexts();
@@ -37,6 +39,12 @@ public class GameManager : MonoBehaviour
         muerteText.text = $"Muertes: {gameData.muertes}";
         vidasText.text = $"Vidas: {gameData.vidas}";
         llaveText.text = $"Llave: {gameData.llave}";
+
+        if (gameData.vidas <= 0)
+        {
+            gameOverText.text = $"Game Over";
+            Time.timeScale = 0f;
+        }
     }
     public List<string> GetSkills()
     {
@@ -70,7 +78,7 @@ public class GameManager : MonoBehaviour
     }
     //vidas jugador 5
     public void PerderVidas() {
-        if (gameData.vidas>0)
+        if (gameData.vidas > 0)
         {
             gameData.vidas--;
             gameRepository.SaveData(gameData);
@@ -80,6 +88,17 @@ public class GameManager : MonoBehaviour
     public int GetVidas()
     {
         return gameData.vidas;
+    }
+    public void PerderVidasSkeleton(){
+        if (gameData.vidas >= 2)
+        {
+            gameData.vidas -= 2;
+        }
+        else if (gameData.vidas == 1) {
+            gameData.vidas = 0;
+        }
+        gameRepository.SaveData(gameData);
+        LoadScreenTexts();
     }
     public void AumentarVidas()
     {

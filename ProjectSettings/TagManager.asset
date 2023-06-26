@@ -17,6 +17,12 @@ TagManager:
   - EnemyArcher
   - EnemyDispara
   - Portal3
+  - EnemyMage
+  - EnemySkeleton
+  - GuardiaSkeleton
+  - EnemySpear
+  - Princesa
+  - EnemyDisp
   layers:
   - Default
   - TransparentFX

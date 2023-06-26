@@ -9,11 +9,14 @@ public class ControllerMage : MonoBehaviour
     private Rigidbody2D rb;
     private Transform currentPoint;
     public float speed;
+    private GameManager gameManager;
+    private bool muerteContada = false;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentPoint = MoveB.transform;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -40,6 +43,15 @@ public class ControllerMage : MonoBehaviour
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == MoveA.transform)
         {
             currentPoint = MoveB.transform;
+        }
+    }
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "flechaPersonaje" && !muerteContada)
+        {
+            muerteContada = true;
+            gameManager.MuertesEnemigo();
+            Destroy(gameObject);
         }
     }
 }
