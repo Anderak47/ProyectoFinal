@@ -16,12 +16,17 @@ public class ControllerPersonajeP : MonoBehaviour
     public GameObject Flecha;
     public GameManager gameManager;
 
+    public AudioClip[] audios;
+    private AudioSource audioSource;
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -51,6 +56,7 @@ public class ControllerPersonajeP : MonoBehaviour
         if (Input.GetKey("z"))
         {
             currentAnimation = 4;
+            audioSource.PlayOneShot(audios[2], 5);
         }
         if (Input.GetKey("c"))
         {
@@ -62,6 +68,7 @@ public class ControllerPersonajeP : MonoBehaviour
         }
         if (Input.GetKey("q"))
         {
+            audioSource.PlayOneShot(audios[3], 5);
             currentAnimation = 7;
         }
 		if (Input.GetKey("v"))
@@ -73,13 +80,15 @@ public class ControllerPersonajeP : MonoBehaviour
 		{
 			currentAnimation = 3;
 			rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
-		}
+            audioSource.PlayOneShot(audios[0],5);
+        }
         if (Input.GetKeyDown(KeyCode.X))
         {
             if (gameManager.GetFlechas() > 0)
             {
                 Instantiate(Flecha, Disparo.position, Disparo.rotation);
                 PerderFlechas();
+                audioSource.PlayOneShot(audios[1], 5);
             }
         }
         //vidas del jugador
@@ -128,8 +137,9 @@ public class ControllerPersonajeP : MonoBehaviour
         {
             gameManager.PerderVidasSkeleton();
             Debug.Log("golpeo skeleton");
-         
+
         }
+        
     }
 
 }

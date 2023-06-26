@@ -23,6 +23,7 @@ TagManager:
   - EnemySpear
   - Princesa
   - EnemyDisp
+  - Mar
   layers:
   - Default
   - TransparentFX

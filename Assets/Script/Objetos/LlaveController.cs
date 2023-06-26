@@ -10,20 +10,21 @@ public class LlaveController : MonoBehaviour
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+  
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player" && !llaveRecogida)
-        {
+        {    
             gameManager.llaves();
             Destroy(gameObject);
-            llaveRecogida = true;
+            llaveRecogida = true;      
         }
     }
 }

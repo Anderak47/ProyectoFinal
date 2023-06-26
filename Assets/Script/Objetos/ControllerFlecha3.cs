@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ControllerFlechas : MonoBehaviour
+public class ControllerFlecha3 : MonoBehaviour
 {
-  
     public GameObject FlechaPrefabs;
     public float tiempoTotalGeneracion = 10f; // Tiempo total de generación en segundos
     public int cantidadFlechas = 10; // Cantidad de flechas a generar
@@ -14,6 +13,7 @@ public class ControllerFlechas : MonoBehaviour
     private float tiempoTranscurrido = 0f;
     private int flechasGeneradas = 0;
     private float tiempoUltimaGeneracion = 0f;
+    // Start is called before the first frame update
     void Start()
     {
         tiempoEntreFlechas = Mathf.Max(intervaloGeneracionMinimo, tiempoTotalGeneracion / cantidadFlechas);
@@ -36,8 +36,8 @@ public class ControllerFlechas : MonoBehaviour
     }
     void GenerarFlecha()
     {
-        float x = Random.Range(4f, 5f);
-        var position = new Vector3(x, -2, 0);
+        float x = Random.Range(-3f, -2f);
+        var position = new Vector3(x, 3, 0);
         Quaternion rotation = Quaternion.Euler(0, 0, -90);
         GameObject flecha = Instantiate(FlechaPrefabs, position, rotation);
         flecha.transform.Rotate(0, 0, 180);

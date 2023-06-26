@@ -21,7 +21,7 @@ public class PortaEscena2D : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (gameManager.GetCantidadLlaves() >= 1)
+            if (gameManager.GetCantidadLlaves() >= 2)
             {
                 SceneManager.LoadScene("Scena3");
             }

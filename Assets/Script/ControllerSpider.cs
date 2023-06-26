@@ -10,6 +10,7 @@ public class ControllerSpider : MonoBehaviour
     private int currentAnimation = 1;
 
     private GameManager gameManager;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -29,7 +30,7 @@ public class ControllerSpider : MonoBehaviour
         if (distanceToPlayer < distanciaAtaque)
         {
             // Ejecutar la animación de ataque
-            //Debug.Log("¡Atacar al personaje!");
+            //Debug.Log("¡Atacar al personaje!"); 
             currentAnimation = 3;
 
         }
@@ -40,9 +41,10 @@ public class ControllerSpider : MonoBehaviour
     {
         if (collision.gameObject.tag == "flechaPersonaje")
         {
-            Debug.Log("choco a spider");
+            Debug.Log("choco a spider");          
             gameManager.MuertesEnemigo(); // Llamar al método MuertesEnemigo del GameManager
             currentAnimation = 4;
+            //audioSource.PlayOneShot(audios[0], 5);
             Destroy(gameObject); // Destruir el objeto del enemigo Spider
 
         }

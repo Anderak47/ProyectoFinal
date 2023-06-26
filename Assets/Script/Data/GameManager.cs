@@ -17,10 +17,11 @@ public class GameManager : MonoBehaviour
     Text vidasText;
     Text llaveText;
     Text gameOverText;
-
+    public AudioClip[] audios;
+    private AudioSource audioSource;
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
         gameRepository = GetComponent<GameRepository>();
         //borrar data
         gameRepository.SaveData(gameData);
@@ -50,6 +51,11 @@ public class GameManager : MonoBehaviour
     {
         return gameData.Skills;
     }
+    public void muertePersonajeMar() {
+        gameData.vidas = 0;
+        gameOverText.text = $"Game Over";
+        Time.timeScale = 0f;
+    }
     //flechas
     public void PerderFlechas() {
         if (gameData.flechas > 0)
@@ -66,12 +72,14 @@ public class GameManager : MonoBehaviour
     //ganarFlechas
     public void GanarFlechas() {
         gameData.flechas++;
+        audioSource.PlayOneShot(audios[2], 5);
         gameRepository.SaveData(gameData);
         LoadScreenTexts();
     }
     //muertes
     public void MuertesEnemigo() {
         gameData.muertes++;
+        audioSource.PlayOneShot(audios[1], 5);
         gameRepository.SaveData(gameData);
         LoadScreenTexts();
 
@@ -103,12 +111,14 @@ public class GameManager : MonoBehaviour
     public void AumentarVidas()
     {
         gameData.vidas++;
+        audioSource.PlayOneShot(audios[0], 5);
         gameRepository.SaveData(gameData);
         LoadScreenTexts();
     }
     //llaves
     public void llaves() {
         gameData.llave++;
+        audioSource.PlayOneShot(audios[0], 5);
         gameRepository.SaveData(gameData);
         LoadScreenTexts();
     }
